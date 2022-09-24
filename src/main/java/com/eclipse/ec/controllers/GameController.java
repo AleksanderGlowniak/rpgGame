@@ -53,7 +53,8 @@ public class GameController {
 				System.out.println("Your Warrior has too short name");
 				
 			}
-			Forest forest = ForestService.createForest();
+			ForestService forestService = new ForestService();
+			Forest forest = forestService.createForest();
 			String resultFight = forest.fight(warrior);
 			
 			return resultFight;

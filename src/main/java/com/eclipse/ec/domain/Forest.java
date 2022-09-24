@@ -47,15 +47,35 @@ public class Forest extends Place implements Occurrenceable {
 		return "Midnight";
 	}
 
-	public void fight(Warior warrior) {
-		System.out.println("Now you see " + enemies.length + " enemies");
-		System.out.println("they names are: ");
+	/*
+	 * public void fight(Warior warrior) { System.out.println("Now you see " +
+	 * enemies.length + " enemies"); System.out.println("they names are: "); for
+	 * (Character enemy : enemies) { System.out.println(enemy.getName() + ", "); }
+	 * System.out.println();
+	 * System.out.println("======================================================");
+	 * System.out.println("Fight: ");
+	 * 
+	 * for (Character enemy : enemies) { if (enemy.getInitiative() <=
+	 * warrior.getInitiative()) { int warriorHit = warrior.getHitPoints() +
+	 * warrior.getWapen().getExtraHit(); int hp = enemy.getHitPoints() - warriorHit;
+	 * enemy.setHitPoints(hp); } else { int hp = warrior.getHitPoints() -
+	 * enemy.getHitPoints(); System.out.println("You was wonded, HP = " + hp);
+	 * warrior.setHitPoints(hp); } if (enemy.getHitPoints() <= 0) {
+	 * System.out.println("You have defited " + enemy.getName()); } }
+	 * 
+	 * }
+	 */
+	
+	public String fight(Warior warrior) {
+		StringBuilder sb = new StringBuilder();
+		sb.append("Now you see " + enemies.length + " enemies");
+		sb.append("they names are: ");
 		for (Character enemy : enemies) {
-			System.out.println(enemy.getName() + ", ");
+			sb.append(enemy.getName() + ", ");
 		}
-		System.out.println();
-		System.out.println("======================================================");
-		System.out.println("Fight: ");
+		
+		sb.append("======================================================");
+		sb.append("Fight: ");
 
 		for (Character enemy : enemies) {
 			if (enemy.getInitiative() <= warrior.getInitiative()) {
@@ -64,13 +84,14 @@ public class Forest extends Place implements Occurrenceable {
 				enemy.setHitPoints(hp);
 			} else {
 				int hp = warrior.getHitPoints() - enemy.getHitPoints();
-				System.out.println("You was wonded, HP = " + hp);
+				sb.append("You was wonded, HP = " + hp);
 				warrior.setHitPoints(hp);
 			}
 			if (enemy.getHitPoints() <= 0) {
-				System.out.println("You have defited " + enemy.getName());
+				sb.append("You have defited " + enemy.getName());
 			}
 		}
+		return sb.toString();
 
 	}
 
